@@ -1,0 +1,6 @@
+name = "tirth-cloudflare"
+type = "webpack"
+account_id = "9323761f2de0073aff908b6818f09208"
+workers_dev = true
+route = ""
+zone_id = ""
