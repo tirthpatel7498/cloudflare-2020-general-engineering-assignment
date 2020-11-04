@@ -109,14 +109,13 @@ async function html_request(request){
       const results = await gatherResponse(final_response)
       return new Response(results, init)
 }
- async function handleRequest(request) {
+async function handleRequest(request) {
     const r = new Router()
-
-    if(request.url)
-    r.get('.*/links', request => json_handler(request))
-    
-    r.get('/', () => html_request(request)) 
-
-    const resp = await r.route(request)
-    return resp
+    const link = new URL(request.url)
+    let e = link.pathname.split('/').filter(n => n)
+    if(e == 'links'){
+      return json_handler(request)
+    }else{
+      return html_request(request)
+    }
 }
